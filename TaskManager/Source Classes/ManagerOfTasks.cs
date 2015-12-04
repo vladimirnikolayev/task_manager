@@ -27,7 +27,7 @@ namespace TaskManager.Source
         public string m_password = "";
 
         public Dictionary<string, Computer> m_computers;
-        public int m_PcsCount
+        public int PcsCount
         {
             get
             {
@@ -37,14 +37,14 @@ namespace TaskManager.Source
 
 //--------------------------------------------------------------------------------------
 
-        public ManagerOfTasks() { /*default constructor*/ }
+        //public ManagerOfTasks() { /*default constructor*/ }
 
-        public ManagerOfTasks(string _adminName)
+        public ManagerOfTasks(string _adminName) //TODO Singleton
         {
             if (_adminName.Length == 0)
                 throw new Exception();
+
             m_adminName = _adminName;
-           
             m_computers = new Dictionary<string, Computer>();
         }
 
@@ -63,12 +63,12 @@ namespace TaskManager.Source
 
 //--------------------------------------------------------------------------------------
 
-        public void addPc(string _pcName, Computer _pc)
+        public void addPc(Computer _pc)
         {
-            if (m_computers.ContainsKey(_pcName))
-                m_computers[_pcName] = _pc;
+            if (m_computers.ContainsKey(_pc.m_computerName))
+                m_computers[_pc.m_computerName] = _pc;
             else
-                m_computers.Add(_pcName, _pc);
+                m_computers.Add(_pc.m_computerName, _pc);
         }
 
 //--------------------------------------------------------------------------------------
@@ -83,12 +83,20 @@ namespace TaskManager.Source
 
 //--------------------------------------------------------------------------------------
 
-        public void addProcessInPc (string _pcName, string _prName, Process _pr)
+        public void addProcessInPc (string _pcName, Process _pr)
         {
-            if (m_computers[_pcName].m_frequency == 100.0 || m_computers[_pcName].m_ram == 100.0)
-                fullCapacity();
-            else
-                m_computers[_pcName].addProcess(_prName, _pr);
+            //if (m_computers[_pcName].m_frequency == 100.0 || m_computers[_pcName].m_ram == 100.0)
+            //    fullCapacity();
+            //else
+            //    m_computers[_pcName].addProcess(_prName, _pr);
+			try
+			{
+				m_computers[_pcName].addProcess(_pr.m_processName, _pr);
+			}
+			catch(Exception _e)
+			{
+				fullCapacity();
+			}
         }
 
 //--------------------------------------------------------------------------------------
@@ -115,7 +123,7 @@ namespace TaskManager.Source
                 m_computers[_pcName].riseProcessor(_frequency);
             else
                 m_computers[_pcName].fallProcessor(_frequency);
-        }
+        } //????
     }
 }
 

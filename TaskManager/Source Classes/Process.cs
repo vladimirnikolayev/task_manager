@@ -26,9 +26,15 @@ namespace TaskManager.Source
         
 //--------------------------------------------------------------------------------------
 
-        public Process() { /*default constructor*/ }
+        //public Process() { /*default constructor*/ }
 
-        public Process(string _processName, string _user, uint _priority, double _cp, double _memory, string _description)
+        public Process(
+			string _processName, 
+			string _user, 
+			uint _priority,
+			double _cp, 
+			double _memory, 
+			string _description)
         {
             if (_processName.Length == 0)
                 throw new Exception();
@@ -42,7 +48,7 @@ namespace TaskManager.Source
             if (_memory < 0.0)
                 throw new Exception();
 
-            if (_priority > 4)
+            if (_priority < 0 || _priority > 4)
                 throw new Exception();
 
             m_processName = _processName;
@@ -57,7 +63,10 @@ namespace TaskManager.Source
 
         public void changePriority(uint _priority)
         {
-            m_priority = _priority;
+			if (_priority < 0 || _priority > 4)
+				throw new Exception();
+
+			m_priority = _priority;
             if (PriorityChanged != null)
                 PriorityChanged();
         }
@@ -70,6 +79,7 @@ namespace TaskManager.Source
                 throw new Exception();
 
             ++_pr.m_priority;
+			_pr.PriorityChanged();
             return _pr;
         }
 
@@ -81,7 +91,8 @@ namespace TaskManager.Source
                 throw new Exception();
 
             --_pr.m_priority;
-            return _pr;
+			_pr.PriorityChanged();
+			return _pr;
         }
     }
 }

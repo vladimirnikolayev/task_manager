@@ -30,9 +30,9 @@ namespace TaskManager.Windows
         {
             if (m_taskManager.authentification(textBoxForPassword.Text))
             {
-                MainWindow main = new MainWindow();
+                MainWindow main = new MainWindow(this);
                 main.Show();
-               // this.Hide();
+               this.Hide();
             }
             else
             {

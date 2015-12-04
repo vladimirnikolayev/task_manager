@@ -26,7 +26,7 @@ namespace TaskManager.Auxiliary_Files
 
         static public void enterByPassword()
         {
-            MessageBox.Show("You succesfully entered the TaskManager");
+            //MessageBox.Show("You succesfully entered the TaskManager");
         }
 
         static public  void completedCapacity()
