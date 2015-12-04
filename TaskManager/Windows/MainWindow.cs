@@ -13,13 +13,14 @@ namespace TaskManager.Windows
 {
     public partial class MainWindow : Form
     {
-		private LoginWindow m_loginWindow;
-
-		public MainWindow(LoginWindow _loginWindow)
+		public MainWindow()
         {
-            InitializeComponent();
-			m_loginWindow = _loginWindow;
-           // fillCombobox();
+			LoginWindow loginWindow = new LoginWindow();
+			loginWindow.ShowDialog();
+			if (loginWindow.hasAccepted == false)
+				throw new Exception();
+			else
+				InitializeComponent();
         }
 
         /*private void fillCombobox()
@@ -76,10 +77,5 @@ namespace TaskManager.Windows
 
             addChangeProcessForm.ShowDialog();
         }
-
-		private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
-		{
-			m_loginWindow.Close();
-		}
 	}
 }

@@ -26,7 +26,7 @@ namespace TaskManager.Source
         
 //--------------------------------------------------------------------------------------
 
-        //public Process() { /*default constructor*/ }
+        public Process() { /*default constructor*/ }
 
         public Process(
 			string _processName, 

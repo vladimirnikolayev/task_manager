@@ -39,7 +39,7 @@ namespace TaskManager.Source
 
         //public ManagerOfTasks() { /*default constructor*/ }
 
-        public ManagerOfTasks(string _adminName) //TODO Singleton
+        public ManagerOfTasks(string _adminName = "me") //TODO Singleton
         {
             if (_adminName.Length == 0)
                 throw new Exception();

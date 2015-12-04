@@ -20,10 +20,16 @@ namespace TaskManager
         static void Main()
         {
             m_interface = new Interface();
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginWindow());
+			try
+			{
+				Application.EnableVisualStyles();
+				Application.SetCompatibleTextRenderingDefault(false);
+				Application.Run(new MainWindow());
+			}
+			catch( Exception _e )
+			{
+				MessageBox.Show(_e.ToString());
+			}
         }
     }
 }

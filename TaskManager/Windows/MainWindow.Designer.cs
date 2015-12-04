@@ -151,7 +151,6 @@
 			this.Controls.Add(this.comboBoxComputers);
 			this.Name = "MainWindow";
 			this.Text = "MainWindow";
-			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

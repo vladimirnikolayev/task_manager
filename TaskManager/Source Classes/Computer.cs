@@ -58,7 +58,7 @@ namespace TaskManager.Source
 
 		//--------------------------------------------------------------------------------------
 
-		//public Computer () { /*default constructor*/ }
+		public Computer () { /*default constructor*/ }
 
         public Computer (string _computerName, double _ram, double _frequency)
         {
